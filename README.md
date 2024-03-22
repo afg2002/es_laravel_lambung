@@ -1,8 +1,8 @@
-# Aplikasi Expert System untuk Diagnosa DBD dan Thypoid
+# Aplikasi Expert System untuk Diagnosa Penyakit Lambung
 
 
 
-Aplikasi ini adalah sebuah sistem pakar yang dikembangkan menggunakan Laravel untuk melakukan diagnosa penyakit Demam Berdarah Dengue (DBD) dan Thypoid. Metode yang digunakan dalam sistem ini adalah Forward Chaining.
+Aplikasi ini adalah sebuah sistem pakar yang dikembangkan menggunakan Laravel untuk melakukan diagnosa penyakit Lambung. Metode yang digunakan dalam sistem ini adalah Forward Chaining.
 
 ## Fitur Utama
 
