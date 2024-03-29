@@ -20,13 +20,13 @@
         @csrf
 
         @if ($urutan != 1)
-        <button type="submit" name="action" value="previous" class="btn btn-primary">Previous</button>
+        <button type="submit" name="action" value="previous" class="btn btn-success">Previous</button>
         @endif
 
         @if ($urutan == $totalPertanyaan)
-            <button type="submit" name="action" value="finish" class="btn btn-primary">Finish</button>
+            <button type="submit" name="action" value="finish" class="btn btn-success">Finish</button>
         @else
-            <button type="submit" name="action" value="next" class="btn btn-primary">Next</button>
+            <button type="submit" name="action" value="next" class="btn btn-success">Next</button>
         @endif
 
         <div class="card mt-3">
@@ -48,8 +48,9 @@
     <div class="card mb-3 mt-2">
         <div class="card-body">
             <h5 class="card-title">{{ $item->nama_gejala }}&nbsp;<span style="color:red">*</span></h5>
+            <p class="card-title">{{ $item->deskripsi }}&nbsp;</p>
             
-            <hr class="my-2"> <!-- Add this line for the separator -->
+            <hr class="my-2"> 
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="gejala_{{ $item->kode_gejala }}" id="ya_{{ $item->kode_gejala }}" value="ya" 
                 @if ($getQA && $getQA["gejala_".$item->kode_gejala] == 'ya')

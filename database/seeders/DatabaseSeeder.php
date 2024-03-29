@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
         
 
         $this->call(UserSeeder::class);
+        $this->call(PenyakitSeeder::class);
         \App\Models\User::factory(10)->create();
         $this->call(GejalaSeeder::class);
-        $this->call(PenyakitSeeder::class);
         $this->call(PertanyaanSeeder::class);
         $this->call(AturanSeeder::class);
     }

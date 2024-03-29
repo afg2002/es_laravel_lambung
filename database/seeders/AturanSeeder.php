@@ -14,8 +14,12 @@ class AturanSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ['kode_penyakit' => 'P1', 'kode_gejala' => 'G01,G02,G03', 'hasil_lab' => '', 'kode_gejalaPD' => ''],
-            ['kode_penyakit' => 'P1', 'kode_gejala' => 'G01,G02,G03', 'hasil_lab' => '', 'kode_gejalaPD' => ''],
+            ['kode_penyakit' => 'P01', 'kode_gejala' => 'G01,G02,G03,G05',],
+            ['kode_penyakit' => 'P02', 'kode_gejala' => 'G03,G05,G15,G17',],
+            ['kode_penyakit' => 'P03', 'kode_gejala' => 'G05,G06,G07,G14',],
+            ['kode_penyakit' => 'P04', 'kode_gejala' => 'G05,G06,G07,G08,G09',],
+            ['kode_penyakit' => 'P05', 'kode_gejala' => 'G05,G11,G12',],
+            ['kode_penyakit' => 'P06', 'kode_gejala' => 'G01,G02,G03,G04,G05,G13',],
         ];
 
         foreach ($data as $item) {
@@ -23,19 +27,10 @@ class AturanSeeder extends Seeder
             sort($gejalaArr);
             $gejalaStr = implode(',', $gejalaArr);
 
-            $labArr = explode(',', $item['hasil_lab']);
-            sort($labArr);
-            $labStr = implode(',', $labArr);
-
-            $pdArr = explode(',', $item['kode_gejalaPD']);
-            sort($pdArr);
-            $pdStr = implode(',', $pdArr);
 
             Aturan::create([
                 'kode_penyakit' => $item['kode_penyakit'],
                 'kode_gejala' => $gejalaStr,
-                'hasil_lab' => $labStr,
-                'kode_gejalaPD' => $pdStr,
             ]);
         }
     }

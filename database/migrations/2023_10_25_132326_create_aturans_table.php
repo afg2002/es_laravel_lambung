@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('kode_penyakit');
             $table->string('kode_gejala');
-            $table->string('hasil_lab');
-            $table->string('kode_gejalaPD');
             $table->timestamps();
 
             // Tambahkan indeks asing ke tabel penyakit dan gejala

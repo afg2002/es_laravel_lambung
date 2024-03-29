@@ -40,8 +40,7 @@ class DiagnosaController extends Controller
         return redirect()->route('diagnosa.pertanyaan', ['urutan' => 1]);
     }
 
-    
-    
+
 
     public function diagnosa(Request $request, $urutan)
     {
@@ -109,20 +108,15 @@ class DiagnosaController extends Controller
 
                             if ($prefix === 'G') {
                                 $groupKeyQA_G[] = $prefixedKey;
-                            } elseif ($prefix === 'K') {
-                                $groupKeyQA_K[] = $prefixedKey;
-                            } elseif ($prefix === 'L') {
-                                $groupKeyQA_L[] = $prefixedKey;
-                            }
+                            } 
                         }
                     }
                 }
             }
-
+            sort($groupKeyQA_G);
+            // dd($groupKeyQA_G);
             $implodeGroupedKeyG = implode(',', $groupKeyQA_G);
-            $implodeGroupedKeyL = implode(',', $groupKeyQA_L);
-            $implodeGroupedKeyK = implode(',', $groupKeyQA_K);
-            $hasilDiagnosa = Aturan::where('kode_gejala', $implodeGroupedKeyG)->where('hasil_lab', $implodeGroupedKeyL)->where('kode_gejalaPD', $implodeGroupedKeyK)->with('penyakit')->get();
+            $hasilDiagnosa = Aturan::where('kode_gejala', $implodeGroupedKeyG)->with('penyakit')->get();
 
             session(['hasilDiagnosa' => $hasilDiagnosa]);
 

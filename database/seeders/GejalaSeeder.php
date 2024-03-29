@@ -67,19 +67,39 @@ class GejalaSeeder extends Seeder
             ],
             [
                 'kode_gejala' => 'G11',
-                'nama_gejala' => 'Sesak Nafas',
-                'deskripsi' => 'Kesulitan bernapas atau perasaan sesak di dada.',
+                'nama_gejala' => 'sakit Pada Tukak Lambung',
+                'deskripsi' => ' luka atau ulkus pada lambung yang menyebabkan penderitanya mengalami keluhan seperti perut kembung, nyeri ulu hati, dan mual.',
             ],
             [
-                'kode_gejala' => 'K01',
-                'nama_gejala' => 'Sakit pada Tukak Lambung',
-                'deskripsi' => 'Rasa sakit yang terlokalisasi pada daerah tukak lambung.',
-            ],
-            $hasilLab = [
-                'kode_gejala' => 'L01',
-                'nama_gejala' => 'Kotoran Hitam/Berdarah',
-                'deskripsi' => 'Terjadi perubahan warna pada kotoran menjadi hitam atau terdapat darah pada kotoran.',
-            ],
+                'kode_gejala' => 'G12',
+                'nama_gejala' => 'Lemah Letih Lesu',
+                'deskripsi' => 'Merasa tidak bertenaga, lelah, dan kurang bersemangat.\nSulit melakukan aktivitas fisik atau mental.\nMudah lelah dan membutuhkan waktu lama untuk pulih.\nKurang motivasi dan sulit berkonsentrasi.',
+              ],
+              [
+                'kode_gejala' => 'G13',
+                'nama_gejala' => 'Sesak Napas',
+                'deskripsi' => 'Kesulitan bernapas atau merasa napas tidak cukup.\nNapas terasa pendek dan cepat.\nDada terasa sesak atau tertekan.\nBatuk kering atau berdahak.',
+              ],
+              [
+                'kode_gejala' => 'G14',
+                'nama_gejala' => 'Kejang Perut',
+                'deskripsi' => 'Kontraksi otot perut yang kuat dan tidak nyaman.\nNyeri perut yang tajam dan kram.\nBisa disertai dengan mual, muntah, atau diare.',
+              ],
+              [
+                'kode_gejala' => 'G15',
+                'nama_gejala' => 'Sembelit',
+                'deskripsi' => 'Kesulitan buang air besar.\nFeses keras dan kering.\nPerut kembung dan tidak nyaman.\nHarus mengejan keras saat buang air besar.',
+              ],
+              [
+                'kode_gejala' => 'G16',
+                'nama_gejala' => 'Perubahan Suhu Tubuh dan Keringat Dingin',
+                'deskripsi' => 'Demam (suhu tubuh lebih tinggi dari 38°C) atau kedinginan (suhu tubuh lebih rendah dari 36°C).\nBerkeringat dingin, terutama di malam hari.\nMenggigil.',
+              ],
+              [
+                'kode_gejala' => 'G17',
+                'nama_gejala' => 'Perasaan Kenyang Berlebihan',
+                'deskripsi' => 'Merasa cepat kenyang setelah makan sedikit.\nTidak nafsu makan.\nMual atau muntah setelah makan.\nPerut terasa penuh dan tidak nyaman.',
+              ],
         ];
 
 

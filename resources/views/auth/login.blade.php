@@ -79,7 +79,7 @@
                                             </div>
                                         </div>
                                         <button type="submit"
-                                            class="btn btn-primary btn-user btn-block">Submit</button>
+                                            class="btn btn-success btn-user btn-block">Submit</button>
                                         <hr>
 
                                     </form>
