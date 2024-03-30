@@ -24,6 +24,7 @@
                     Tidak ada hasil diagnosa yang ditemukan.
                 </div>
             @endif
+
             <form action="{{ route('diagnosa.reset') }}" method="post">
                 @csrf
                 <button class="btn btn-primary" type="submit" value="Submit">Diagnosa Ulang</button>

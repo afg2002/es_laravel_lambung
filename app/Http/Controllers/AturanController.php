@@ -6,16 +6,16 @@ use App\Models\Aturan;
 use App\Models\Gejala;
 use App\Models\Penyakit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AturanController extends Controller
 {
     
     public function index()
     {
-        $aturan = Aturan::all();
+        $aturan = DB::table('aturan')->join('penyakit','penyakit.kode_penyakit', '=', 'aturan.kode_penyakit')->get();
         return view('aturan.index', compact('aturan'));
     }
-
    
     public function create()
     {
@@ -37,20 +37,18 @@ class AturanController extends Controller
     sort($kode_gejala);
     $kode_gejala = implode(',', array_unique($kode_gejala));
 
-    $hasil_lab = $request->hasil_lab ?? [];
-    sort($hasil_lab);
-    $hasil_lab = implode(',', array_unique($hasil_lab));
+    // $hasil_lab = $request->hasil_lab ?? [];
+    // sort($hasil_lab);
+    // $hasil_lab = implode(',', array_unique($hasil_lab));
 
-    $kode_gejalaPD = $request->kode_gejalaPD ??[];
-    sort($kode_gejalaPD);
-    $kode_gejalaPD = implode(',', array_unique($kode_gejalaPD));
+    // $kode_gejalaPD = $request->kode_gejalaPD ??[];
+    // sort($kode_gejalaPD);
+    // $kode_gejalaPD = implode(',', array_unique($kode_gejalaPD));
 
     
     Aturan::create([
         'kode_penyakit' => $request->kode_penyakit,
         'kode_gejala' => $kode_gejala,
-        'hasil_lab' => $hasil_lab,
-        'kode_gejalaPD' => $kode_gejalaPD,
     ]);
 
     return redirect()->route('aturan.index')->with('success', 'Data aturan berhasil ditambahkan.');

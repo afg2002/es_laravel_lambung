@@ -83,7 +83,7 @@ class DiagnosaController extends Controller
         }, ARRAY_FILTER_USE_KEY);
 
         $pilihan_jawaban = explode(',', $pertanyaan->pilihan_jawaban);
-        // dd(count($gejalaResponses), count($pilihan_jawaban), $gejalaResponses, $pilihan_jawaban);
+
         if (count($gejalaResponses) == 0 || count($pilihan_jawaban) != count($gejalaResponses)) {
             return redirect()->route('diagnosa.pertanyaan', ['urutan' => $urutan])->with('error', 'Belum diisi semua.');
         }
@@ -96,8 +96,6 @@ class DiagnosaController extends Controller
         if ($action === 'finish') {
             $dataQA = $request->session()->get('dataQA', []);
             $groupKeyQA_G = [];
-            $groupKeyQA_K = [];
-            $groupKeyQA_L = [];
 
             foreach ($dataQA as $key => $value) {
                 if (strpos($key, 'QA') === 0) {
@@ -108,15 +106,39 @@ class DiagnosaController extends Controller
 
                             if ($prefix === 'G') {
                                 $groupKeyQA_G[] = $prefixedKey;
-                            } 
+                            }
                         }
                     }
                 }
             }
+
             sort($groupKeyQA_G);
-            // dd($groupKeyQA_G);
             $implodeGroupedKeyG = implode(',', $groupKeyQA_G);
-            $hasilDiagnosa = Aturan::where('kode_gejala', $implodeGroupedKeyG)->with('penyakit')->get();
+
+            // Ambil gejala dari database untuk perhitungan tingkat terkena penyakit
+            $gejalaDatabase = Aturan::select('kode_gejala')->distinct()->get()->pluck('kode_gejala')->toArray();
+
+            // Hitung tingkat terkena penyakit untuk setiap penyakit
+            $tingkatTerkenaPenyakit = [];
+            foreach ($gejalaDatabase as $gejala) {
+                $gejalaArray = explode(',', $gejala);
+                $jumlahGejalaCocok = count(array_intersect($gejalaArray, $groupKeyQA_G));
+                $totalGejalaPenyakit = count($gejalaArray);
+                $tingkatTerkena = ($jumlahGejalaCocok / $totalGejalaPenyakit) * 100;
+                $tingkatTerkenaPenyakit[$gejala] = $tingkatTerkena;
+            }
+
+            // Sorting berdasarkan tingkat terkena penyakit
+            arsort($tingkatTerkenaPenyakit);
+
+            // Ambil dua top penyakit berdasarkan tingkat terkena
+            $topPenyakit = array_slice($tingkatTerkenaPenyakit, 0, 2, true);
+
+
+            // dd(array_values($topPenyakit));
+
+            // Ambil semua penyakit dengan nilai Jaccard Index tertinggi
+            $hasilDiagnosa = Aturan::whereIn('kode_gejala', array_keys($topPenyakit))->with('penyakit')->get();
 
             session(['hasilDiagnosa' => $hasilDiagnosa]);
 
