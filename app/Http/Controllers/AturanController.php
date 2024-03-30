@@ -82,19 +82,17 @@ class AturanController extends Controller
     sort($kode_gejala);
     $kode_gejala = implode(',', array_unique($kode_gejala));
 
-    $hasil_lab = $request->hasil_lab ?? [];
-    sort($hasil_lab);
-    $hasil_lab = implode(',', array_unique($hasil_lab));
+    // $hasil_lab = $request->hasil_lab ?? [];
+    // sort($hasil_lab);
+    // $hasil_lab = implode(',', array_unique($hasil_lab));
 
-    $kode_gejalaPD = $request->kode_gejalaPD ??[];
-    sort($kode_gejalaPD);
-    $kode_gejalaPD = implode(',', array_unique($kode_gejalaPD));
+    // $kode_gejalaPD = $request->kode_gejalaPD ??[];
+    // sort($kode_gejalaPD);
+    // $kode_gejalaPD = implode(',', array_unique($kode_gejalaPD));
 
     $aturan->update([
         'kode_penyakit' => $request->kode_penyakit,
         'kode_gejala' => $kode_gejala,
-        'hasil_lab' => $hasil_lab,
-        'kode_gejalaPD' => $kode_gejalaPD,
     ]);
 
     return redirect()->route('aturan.index')->with('success', 'Data aturan berhasil diperbarui.');

@@ -38,7 +38,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="hasil_lab">Hasil Lab</label>
                     <select class="form-control multiple-select" id="hasil_lab" name="hasil_lab[]" multiple>
                         @foreach($hasil_lab as $item)
@@ -57,7 +57,7 @@
                             </option>
                         @endforeach
                     </select>
-                </div>
+                </div> -->
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </form>
         </div>

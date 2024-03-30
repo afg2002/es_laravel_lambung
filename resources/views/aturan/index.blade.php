@@ -36,8 +36,6 @@
                         <th scope="col">ID</th>
                         <th scope="col">Kode Penyakit</th>
                         <th scope="col">Kode Gejala</th>
-                        <th scope="col">Kode Hasil Lab</th>
-                        <th scope="col">Kode Hasil Pemeriksaan</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -48,8 +46,6 @@
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->kode_penyakit }}</td>
                         <td>{{ $item->kode_gejala }}</td>
-                        <td>{{ $item->hasil_lab }}</td>
-                        <td>{{ $item->kode_gejalaPD }}</td>
                         <td>
                             <div style="display: flex; align-items: center; justify-content: space-between;">
                                 <a href="{{ route('aturan.edit', ['aturan' => $item->id]) }}" class="btn btn-info btn-sm mr-2">
